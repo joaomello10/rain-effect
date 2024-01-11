@@ -27,20 +27,32 @@ class Rain {
 
 function fall() {
   const rain = new Rain();
-  const speed = randomNumber(30, 20);
-  function loop() {
+  const speed = randomNumber(20, 30);
+
+  function updateRainPosition() {
     rain.y += speed;
-    if (rain.rotate % 2 == 0) {
+
+    if (rain.rotate % 2 === 0) {
       rain.x += 1;
     } else {
       rain.x -= 1;
     }
+
     if (rain.y > canvas.height) {
-      rain.x = randomNumber(canvas.width, 1);
-      rain.y = randomNumber(1000, 1) * -1;
-      rain.rotate = randomNumber(3, 1);
+      resetRain();
     }
+
     rain.draw();
+  }
+
+  function resetRain() {
+    rain.x = randomNumber(canvas.width, 1);
+    rain.y = randomNumber(1000, 1) * -1;
+    rain.rotate = randomNumber(3, 1);
+  }
+
+  function loop() {
+    updateRainPosition();
     window.requestAnimationFrame(loop);
   }
 
