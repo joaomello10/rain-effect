@@ -1,6 +1,6 @@
 const canvas = document.querySelector("canvas");
 const context = canvas.getContext("2d");
-let lengthOfRain = 300;
+let lengthOfRain = 400;
 
 function randomNumber(b, a) {
   return Math.floor(Math.random() * (b - a + 1)) + a;
